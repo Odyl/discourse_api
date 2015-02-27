@@ -8,6 +8,7 @@ module DiscourseApi
         sso.username = params[:username]
         sso.email = params[:email]
         sso.external_id = params[:external_id]
+        sso.avatar_url = params[:avatar_url]
         post("/admin/users/sync_sso/", sso.payload)
       end
     end
