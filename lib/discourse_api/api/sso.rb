@@ -11,8 +11,8 @@ module DiscourseApi
         sso.suppress_welcome_message = params[:suppress_welcome_message] === true
         sso.avatar_url = params[:avatar_url]
         sso.avatar_force_update = params[:avatar_force_update] === true
-        params[:custom_fields].each do |k, v|
-          sso.custom_fields[k] = v
+        params.keys.select{|key| key.to_s.start_with?("custom") }.each do |custom_key|
+          sso.custom_fields[custom_key] = params[custom_key]
         end
 
         post("/admin/users/sync_sso", sso.payload)
