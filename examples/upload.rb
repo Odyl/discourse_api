@@ -5,13 +5,8 @@ client = DiscourseApi::Client.new("http://localhost:3000")
 client.api_key = "YOUR_API_KEY"
 client.api_username = "YOUR_USERNAME"
 
-# create user
-user = client.create_user(
-  name: "Bruce Wayne",
-  email: "bruce@wayne.com",
-  username: "batman",
-  password: "WhySoSerious"
-)
+# Upload an image via file
+client.upload_post_image(file: 'grumpy_cat.gif')
 
-# activate user
-client.activate(user["user_id"])
+# Upload an image via URL
+client.upload_post_image(url: 'https://giphy.com/grumpy_cat.gif')
